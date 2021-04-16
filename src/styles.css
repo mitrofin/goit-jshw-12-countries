@@ -64,3 +64,8 @@ p {
   width: 100%;
   padding: 5px;
 }
+.list-flag {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+}

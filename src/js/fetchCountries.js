@@ -1,4 +1,4 @@
-function fetchCountries(searchQuery) {
+/* export default */ function fetchCountries(searchQuery) {
     return fetch(`https://restcountries.eu/rest/v2/name/${searchQuery}`)
         .then(response => {
             /* if (response.ok)  return response.json(); */
@@ -6,8 +6,9 @@ function fetchCountries(searchQuery) {
                 return response.json();}
             return response.json();
             
-        }).then(data => console.log(data));
+        })/* .then(data => console.log(data)); */
     
 }
 
-export default {fetchCountries};
+
+export default  fetchCountries ;
