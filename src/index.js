@@ -3,67 +3,80 @@ import fetchCountries from './js/fetchCountries';
 import getRefs from "./js/getRefs";
 import countryListTemplate from './templates/country-list.hbs';
 import countryInfoTemplate from "./templates/country-info.hbs";
+import"@pnotify/core/dist/PNotify.css";
 import '@pnotify/core/dist/BrightTheme.css';
 import { alert, info, error } from '@pnotify/core';
-import { defaults } from '@pnotify/core';
 
 const debounce = require('lodash.debounce');
-
 const refs = getRefs();
 
-/* fetchCountries(); */
-
-refs.searchForm.addEventListener('input',debounce(onSearch,500));
+refs.searchForm.addEventListener('input',debounce(onSearch, 500));
 
 function onSearch(event) {
     event.preventDefault();
     const searchData = event.target.value;
-    console.log(searchData);
+    if (searchData.length === 0 || searchData === "") {
+        /* clearResult() */
+        clearCounrty()
+        ShowInfo()
+        return;
+    }
     fetchCountries(searchData)
         .then(country => {
             if (country.length > 10) {
                 showAlert()
+                clearResult()
                 clearCounrty()
+                
+            }
+            if (country.length > 1 && country.length <10) {
+            return (refs.containerList.insertAdjacentHTML('beforeend', countryListTemplate(country)))
+            }
+            if (country.length === 1) {
+                return (refs.containerList.insertAdjacentHTML('afterbegin', countryInfoTemplate(country)));   
             }
             if (country.status === 404)  {
                 showError()
             }
-            appendCountries(country);
+            /* appendCountries(country); */
         })
+        
         .catch(error => {
+            showError()
                 console.log({ error });
-            })
+        })
+    
 };
- 
-function appendCountries(country) {
+
+/* function appendCountries(country) {
     const markUp = countryListTemplate(country);
     console.log(markUp);
     const markUpName = countryInfoTemplate(country);
-    console.log(markUpName);
-
-    if (country.length === 1) {
-        return (refs.containerList.insertAdjacentHTML('beforeend', markUpName));   
-    }
-
-    if (country.length > 1) {
-        return (refs.containerList.insertAdjacentHTML('beforeend', markUp))
-    }
-}
+    console.log(markUpName);    
+} */
+function ShowInfo() {
+     info({
+        text:
+             "Спробуйте ще раз!",
+        delay: 1000,
+        });
+};
 
 
 function showError() {
-    const myError = error({      
+     error({      
     text:
-            "Нічого не знайдено! ",
-        delay: 700,
+            "Нічого не знайдено!",
+        delay: 1000,
     });
    
 }
 function showAlert() {
-    const myAlert = alert({
+     alert({
     text:
-            "Багато співпадінь.Уточіть пошук! Використовуйте ENG",
-        delay: 700,
+            "Багато співпадінь. Уточіть пошук! Використовуйте ENG",
+        delay: 2000,
+        
     });
     
 }
@@ -77,8 +90,6 @@ function clearResult() {
 function clearCounrty() {
         refs.containerList.innerHTML = "";
 }
-
-
 
 
 
