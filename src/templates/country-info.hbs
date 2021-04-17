@@ -8,10 +8,12 @@
         <li>Region: {{region}}</li>
         <li>Population: {{population}}</li>
         <li>Area: {{area}}</li>
-        <li>Languages: </li>
-        {{#each this.languages}}
+        <li>Languages:
+            {{#each this.languages}}
         <li>{{name}}</li>
         {{/each}}
+        </li>
+
         {{!-- <div class="flag"><img src={{flag}} alt="flag" width="100%"></div> --}}
     </ul>
     <div class="flag"><img src={{flag}} alt="flag" width="400"></div>

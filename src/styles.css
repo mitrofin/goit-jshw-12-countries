@@ -24,15 +24,16 @@ p {
   font-family: cursive;
 }
 .container-cards {
-  max-width: 1600px;
+  max-width: 1000px;
   height: 100%;
+  display: contents;
 }
 .card {
   border: 1px solid rgb(180, 166, 166);
   width: 100%;
   margin: 5px;
   padding: 5px;
-  justify-content: center;
+  /* justify-content: center; */
   max-height: 650px;
 }
 .info {
@@ -45,7 +46,7 @@ p {
 }
 
 .input-label {
-  width: 400px;
+  width: 600px;
   height: 50px;
   font-size: 25px;
   text-align: center;
@@ -68,4 +69,7 @@ p {
   display: block;
   width: 100%;
   margin: 10px 0;
+}
+.list-section {
+  text-align: left;
 }
