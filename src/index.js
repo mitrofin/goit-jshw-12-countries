@@ -22,8 +22,8 @@ function onSearch(event) {
   .then(country => {
    if (country.length > 10) {
     showNotify.showAlert();
-    clearResult();
-    clearCounrty();
+    /* clearResult();
+    clearCounrty(); */
    }
    if (country.length > 1 && country.length < 10) {
     return refs.containerList.insertAdjacentHTML(
