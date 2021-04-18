@@ -5,14 +5,14 @@ import { alert, info, error } from '@pnotify/core';
 function ShowInfo() {
  info({
   text: 'Спробуйте ще раз!',
-  delay: 1000,
+  delay: 2000,
  });
 }
 
 function showError() {
  error({
   text: 'Нічого не знайдено!',
-  delay: 1000,
+  delay: 2000,
  });
 }
 function showAlert() {
