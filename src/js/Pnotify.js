@@ -17,7 +17,7 @@ function showError() {
 }
 function showAlert() {
  alert({
-  text: 'Багато співпадінь. Уточіть пошук! Використовуйте ENG',
+  text: 'Уточіть пошук! Використовуйте ENG',
   delay: 2000,
  });
 }

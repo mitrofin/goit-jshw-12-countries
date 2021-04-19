@@ -2,7 +2,8 @@ function fetchCountries(searchQuery) {
  return fetch(`https://restcountries.eu/rest/v2/name/${searchQuery}`).then(
   response => {
    /* if (response.status === 404) {
-                return response.json();} */
+    console.log('УПС');
+   } */
    return response.json();
   },
  ); /* .then(data => console.log(data)); */

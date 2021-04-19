@@ -16,6 +16,12 @@ function onSearch(event) {
  clearCounrty();
  if (searchData.length === 0 || searchData === '') {
   showNotify.ShowInfo();
+  clearResult();
+  return;
+ }
+ if (searchData === ' ' || searchData === '  ' || searchData === '   ') {
+  showNotify.showAlert();
+  clearResult();
   return;
  }
  fetchCountries(searchData)
@@ -40,6 +46,7 @@ function onSearch(event) {
    if (country.status === 404) {
     showNotify.showError();
    }
+
    /* appendCountries(country); */
   })
 
