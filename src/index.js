@@ -12,14 +12,14 @@ refs.searchForm.addEventListener('input', debounce(onSearch, 500));
 
 function onSearch(event) {
  event.preventDefault();
- const searchData = event.target.value;
+ const searchData = event.target.value.trim();
  clearCounrty();
- if (searchData.length === 0 || searchData === '') {
+ if (searchData.length === 0) {
   showNotify.ShowInfo();
   clearResult();
   return;
  }
- if (searchData === ' ' || searchData === '  ' || searchData === '   ') {
+ if (searchData === '') {
   showNotify.showAlert();
   clearResult();
   return;
